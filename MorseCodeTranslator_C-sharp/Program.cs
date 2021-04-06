@@ -49,7 +49,8 @@ namespace MorseCodeTranslator_C_sharp
             Console.WriteLine();
 
             string[] englishInput = new string[] { "I love code",
-                                                 ""};
+                                                   "3 x 2 = 6",
+                                                   "Blackbird singing in the dead of night/Take these broken wings and learn to fly"};
 
             Console.ReadLine();
         }
