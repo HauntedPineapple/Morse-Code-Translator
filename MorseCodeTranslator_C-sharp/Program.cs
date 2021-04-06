@@ -42,16 +42,20 @@ namespace MorseCodeTranslator_C_sharp
             string[] morseInput = new string[] { ".... . .-.. .-.. --- / .-- --- .-. .-.. -..",
                                                  ".-- .... .- - .----. ... / ..- .--.",
                                                  "..--- / .-.-. / ..--- / -...- / ....-"};
-            foreach(string input in morseInput)
+            foreach (string input in morseInput)
             {
                 Console.WriteLine("\"" + input + "\" --> \"" + MorseToEnglish(input) + "\"");
             }
             Console.WriteLine();
 
-            string[] englishInput = new string[] { "I love code",
+            string[] englishInput = new string[] { "I love code!",
                                                    "3 x 2 = 6",
-                                                   "Blackbird singing in the dead of night/Take these broken wings and learn to fly"};
-
+                                                   "Blackbird singing in the dead of night",
+                                                   "Take these broken wings and learn to fly"};
+            foreach (string input in englishInput)
+            {
+                Console.WriteLine("\"" + input + "\" --> \"" + EnglishToMorse(input) + "\"");
+            }
             Console.ReadLine();
         }
 
