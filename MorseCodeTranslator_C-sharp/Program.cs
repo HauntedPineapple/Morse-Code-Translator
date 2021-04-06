@@ -39,12 +39,17 @@ namespace MorseCodeTranslator_C_sharp
                 { '=',"-...-"}, { '+',".-.-."}, { '-',"-....-"}, { '@',".--.-."}
             };
 
-            string morseInput = ".... . .-.. .-.. --- / .-- --- .-. .-.. -..";
-            string englishInput = "I love code!";
-
-
-            Console.WriteLine("\"" + morseInput + "\" --> \"" + MorseToEnglish(morseInput) + "\"");
+            string[] morseInput = new string[] { ".... . .-.. .-.. --- / .-- --- .-. .-.. -..",
+                                                 ".-- .... .- - .----. ... / ..- .--.",
+                                                 "..--- / .-.-. / ..--- / -...- / ....-"};
+            foreach(string input in morseInput)
+            {
+                Console.WriteLine("\"" + input + "\" --> \"" + MorseToEnglish(input) + "\"");
+            }
             Console.WriteLine();
+
+            string[] englishInput = new string[] { "I love code",
+                                                 ""};
 
             Console.ReadLine();
         }
@@ -82,7 +87,7 @@ namespace MorseCodeTranslator_C_sharp
                 }
             }
 
-            return output;
+            return output.ToUpper();
         }
 
         static string EnglishToMorse(string message)
