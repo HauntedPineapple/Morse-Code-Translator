@@ -31,23 +31,70 @@ namespace MorseCodeTranslator_C_sharp
                 { 'y',"-.--"}, { 'z',"--.."},
                 { '0',"-----"}, { '1',".----"},  { '2',"..---"},
                 { '3',"...--"}, { '4',"....-"}, { '5',"....."}, { '6',"-...."},
-                { '7',"--..."}, { '8',"---.."}, { '9',"----."}, 
+                { '7',"--..."}, { '8',"---.."}, { '9',"----."},
                 { '.',".-.-.-"},
                 { ',',"--..--"}, { '?',"..--.."}, { '!',"-.-.--"}, { '\'',".----."},
                 { '"',".-..-."}, { '(',"-.--.-"}, { ')',"-.--."}, { '&',".-..."},
                 { ':',"---..."}, { ';',"-.-.-."}, { '/',"-..-."}, { '_',"..--.-"},
                 { '=',"-...-"}, { '+',".-.-."}, { '-',"-....-"}, { '@',".--.-."}
             };
+
+            string morseInput = ".... . .-.. .-.. --- / .-- --- .-. .-.. -..";
+            string englishInput = "I love code!";
+
+
+            Console.WriteLine("\"" + morseInput + "\" --> \"" + MorseToEnglish(morseInput) + "\"");
+            Console.WriteLine();
+
+            Console.ReadLine();
         }
 
-        static string morseToEnglish(string message)
+        static string MorseToEnglish(string message)
         {
-            return null;
+            string output = "";
+            string[] messageWords = message.Split(new string[] { " / " }, StringSplitOptions.RemoveEmptyEntries); ;
+            //string[] wordLetters = messageWords.Split(' ');
+            // List represents sentence with each array representing a word in the message
+            List<string[]> wordLetters = new List<string[]>();
+            foreach (string word in messageWords)
+            {
+                wordLetters.Add(word.Split(' '));
+            }
+
+            int count = 0;
+            for (int a = 0; a < wordLetters.Count; a++)
+            {
+                count++;
+                for (int i = 0; i < wordLetters[a].Length; i++)
+                {
+                    foreach (KeyValuePair<char, string> entry in morseDictionary)
+                    {
+                        if (wordLetters[a][i] == entry.Value)
+                        {
+                            output += entry.Key;
+                            break;
+                        }
+                    }
+                }
+                if (count < wordLetters.Count)
+                {
+                    output += " ";
+                }
+            }
+
+            return output;
         }
 
-        static string englishToMorse(string message)
+        static string EnglishToMorse(string message)
         {
-            return null;
+            string output = "";
+            message = message.ToLower();
+            foreach (char letter in message)
+            {
+
+            }
+
+            return output;
         }
     }
 }
