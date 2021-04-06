@@ -14,7 +14,6 @@ namespace MorseCodeTranslator_C_sharp
         // a HYPHEN "-" will be used to represent DASHES
         // LETTERS are separated by SPACES
         // WORDS are separated by FORWARD SLASHES "/"
-        // if a letter cannot be translated, it will be output as "#"
 
         static Dictionary<char, string> morseDictionary;
 
@@ -39,23 +38,8 @@ namespace MorseCodeTranslator_C_sharp
                 { '=',"-...-"}, { '+',".-.-."}, { '-',"-....-"}, { '@',".--.-."}
             };
 
-            string[] morseInput = new string[] { ".... . .-.. .-.. --- / .-- --- .-. .-.. -..",
-                                                 ".-- .... .- - .----. ... / ..- .--.",
-                                                 "..--- / .-.-. / ..--- / -...- / ....-"};
-            foreach (string input in morseInput)
-            {
-                Console.WriteLine("\"" + input + "\" --> \"" + MorseToEnglish(input) + "\"");
-            }
-            Console.WriteLine();
+            TestCode();
 
-            string[] englishInput = new string[] { "I love code!",
-                                                   "3 x 2 = 6",
-                                                   "Blackbird singing in the dead of night",
-                                                   "Take these broken wings and learn to fly"};
-            foreach (string input in englishInput)
-            {
-                Console.WriteLine("\"" + input + "\" --> \"" + EnglishToMorse(input) + "\"");
-            }
             Console.ReadLine();
         }
 
@@ -99,12 +83,61 @@ namespace MorseCodeTranslator_C_sharp
         {
             string output = "";
             message = message.ToLower();
-            foreach (char letter in message)
-            {
+            string[] messageWords = message.Split(' ');
 
+            int wordCount = 0;
+            int letterCount = 0;
+            for (int i = 0; i < messageWords.Length; i++)
+            {
+                wordCount++;
+                foreach (char letter in messageWords[i])
+                {
+                    letterCount++;
+                    foreach (KeyValuePair<char, string> entry in morseDictionary)
+                    {
+                        if (letter == entry.Key)
+                        {
+                            output += entry.Value;
+                            break;
+                        }
+                    }
+                    if (letterCount < messageWords[i].Length)
+                    {
+                        output += " ";
+                    }
+                }
+                letterCount = 0;
+                if (wordCount < messageWords.Length)
+                {
+                    output += " / ";
+                }
             }
 
             return output;
+        }
+
+        static void TestCode()
+        {
+            string[] morseInput = new string[] { ".... . .-.. .-.. --- / .-- --- .-. .-.. -..",
+                                                 ".-- .... .- - .----. ... / ..- .--.",
+                                                 "..--- / .-.-. / ..--- / -...- / ....-",
+            ".. ... -. .----. - / - .... .. ... / -.-. --- --- .-.. ..--.."};
+            foreach (string input in morseInput)
+            {
+                Console.WriteLine("\"" + input + "\" --> \"" + MorseToEnglish(input) + "\"");
+                Console.WriteLine();
+            }
+
+            string[] englishInput = new string[] { "I love code!",
+                                                   "3 x 2 = 6",
+                                                   "This *** is not valid",
+                                                   "Blackbird singing in the dead of night",
+                                                   "Take these broken wings and learn to fly"};
+            foreach (string input in englishInput)
+            {
+                Console.WriteLine("\"" + input + "\" --> \"" + EnglishToMorse(input) + "\"");
+                Console.WriteLine();
+            }
         }
     }
 }
