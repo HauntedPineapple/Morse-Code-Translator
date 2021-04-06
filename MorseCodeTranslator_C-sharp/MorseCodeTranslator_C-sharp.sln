@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorseCodeTranslator_C-sharp", "MorseCodeTranslator_C-sharp.csproj", "{9BF57D2E-EB84-4F83-A503-035D1DE953F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BF57D2E-EB84-4F83-A503-035D1DE953F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BF57D2E-EB84-4F83-A503-035D1DE953F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BF57D2E-EB84-4F83-A503-035D1DE953F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BF57D2E-EB84-4F83-A503-035D1DE953F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA48E6C4-C1DE-4185-8025-B1D4BF784C68}
+	EndGlobalSection
+EndGlobal
